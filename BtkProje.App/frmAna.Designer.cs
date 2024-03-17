@@ -192,6 +192,7 @@
             xtraTabControlMain.Size = new Size(742, 384);
             xtraTabControlMain.TabIndex = 0;
             xtraTabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] { xtraTabPage1, xtraTabPage2 });
+            xtraTabControlMain.CloseButtonClick += xtraTabControlMain_CloseButtonClick;
             // 
             // xtraTabPage1
             // 

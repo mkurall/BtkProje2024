@@ -1,5 +1,6 @@
 using BtkProje.App.Sayfalar;
 using DevExpress.XtraTab;
+using DevExpress.XtraTab.ViewInfo;
 
 namespace BtkProje.App
 {
@@ -29,14 +30,26 @@ namespace BtkProje.App
 
         Dictionary<SayfaTurleri, XtraTabPage> sayfalar =
             new Dictionary<SayfaTurleri, XtraTabPage>();
-        enum SayfaTurleri { Kullanicilar = 0, Ayarlar=1 };
+        enum SayfaTurleri { Kullanicilar = 0, Ayarlar = 1 };
 
-        void SayfaAc(SayfaTurleri turu, string baslik, Image image,bool tekrarEdebilirMi=false)
+        void SayfaKapat(XtraTabPage tabPage)
         {
-            //Sayfa daha önce açýlmýþ mý?
+            xtraTabControlMain.TabPages.Remove(tabPage);
+
+            if (tabPage.Tag != null)//Cebinde anahtar var
+            {
+                SayfaTurleri sayfaTuru = (SayfaTurleri)tabPage.Tag;
+
+                sayfalar.Remove(sayfaTuru);
+            }
+        }
+
+        void SayfaAc(SayfaTurleri turu, string baslik, Image image, bool tekrarEdebilirMi = false)
+        {
+
             if (!tekrarEdebilirMi)
             {
-                if (sayfalar.ContainsKey(turu))
+                if (sayfalar.ContainsKey(turu))//Sayfa daha önce açýlmýþ mý?
                 {
                     XtraTabPage eskiSayfa = sayfalar[turu];
                     eskiSayfa.Show();//sayfayý göster ve çýk
@@ -47,6 +60,7 @@ namespace BtkProje.App
             XtraTabPage tabPage = new XtraTabPage();
             tabPage.Text = baslik;
             tabPage.ImageOptions.Image = image;
+            tabPage.Tag = turu;//*******
 
             //Sayfa içeriðini oluþtur ve ekle
             UserControl icerik = null;
@@ -61,20 +75,27 @@ namespace BtkProje.App
             /////////////////////////////////////////////////
 
             //Sonrasý için sakla, iki kere ayný sayfayý açma
-            if(!tekrarEdebilirMi)
-             sayfalar.Add(SayfaTurleri.Ayarlar, tabPage);
+            if (!tekrarEdebilirMi)
+                sayfalar.Add(SayfaTurleri.Ayarlar, tabPage);
 
             xtraTabControlMain.TabPages.Add(tabPage);
             tabPage.Show();
         }
         private void nbiKullanicilar_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            SayfaAc(SayfaTurleri.Kullanicilar, "Kullanýcýlar", Properties.Resources.usergroup_32x32,true);
+            SayfaAc(SayfaTurleri.Kullanicilar, "Kullanýcýlar", Properties.Resources.usergroup_32x32, true);
         }
 
         private void nbiAyarlar_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             SayfaAc(SayfaTurleri.Ayarlar, "Ayarlar", Properties.Resources.properties_32x32);
+        }
+
+        private void xtraTabControlMain_CloseButtonClick(object sender, EventArgs e)
+        {
+            ClosePageButtonEventArgs ea2 = (ClosePageButtonEventArgs)e;
+
+            SayfaKapat((XtraTabPage)ea2.Page);
         }
     }
 }
