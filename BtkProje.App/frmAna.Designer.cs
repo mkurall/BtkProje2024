@@ -43,9 +43,6 @@
             navBarGroup4 = new DevExpress.XtraNavBar.NavBarGroup();
             navBarGroup5 = new DevExpress.XtraNavBar.NavBarGroup();
             xtraTabControlMain = new DevExpress.XtraTab.XtraTabControl();
-            xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainerControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainerControl1.Panel1).BeginInit();
@@ -55,8 +52,6 @@
             splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)navBarControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)xtraTabControlMain).BeginInit();
-            xtraTabControlMain.SuspendLayout();
-            xtraTabPage1.SuspendLayout();
             SuspendLayout();
             // 
             // ribbonControl1
@@ -77,6 +72,7 @@
             bbiKaydet.ImageOptions.Image = Properties.Resources.save_16x16;
             bbiKaydet.ImageOptions.LargeImage = Properties.Resources.save_32x32;
             bbiKaydet.Name = "bbiKaydet";
+            bbiKaydet.ItemClick += bbiKaydet_ItemClick;
             // 
             // ribbonPage1
             // 
@@ -188,34 +184,9 @@
             xtraTabControlMain.Dock = DockStyle.Fill;
             xtraTabControlMain.Location = new Point(0, 0);
             xtraTabControlMain.Name = "xtraTabControlMain";
-            xtraTabControlMain.SelectedTabPage = xtraTabPage1;
             xtraTabControlMain.Size = new Size(742, 384);
             xtraTabControlMain.TabIndex = 0;
-            xtraTabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] { xtraTabPage1, xtraTabPage2 });
             xtraTabControlMain.CloseButtonClick += xtraTabControlMain_CloseButtonClick;
-            // 
-            // xtraTabPage1
-            // 
-            xtraTabPage1.Controls.Add(labelControl1);
-            xtraTabPage1.Name = "xtraTabPage1";
-            xtraTabPage1.Size = new Size(740, 348);
-            xtraTabPage1.Text = "xtraTabPage1";
-            // 
-            // labelControl1
-            // 
-            labelControl1.Appearance.Font = new Font("Tahoma", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            labelControl1.Appearance.Options.UseFont = true;
-            labelControl1.Location = new Point(70, 60);
-            labelControl1.Name = "labelControl1";
-            labelControl1.Size = new Size(529, 28);
-            labelControl1.TabIndex = 0;
-            labelControl1.Text = "ClosePageButtonShowMode = InAllTabPageHeaders";
-            // 
-            // xtraTabPage2
-            // 
-            xtraTabPage2.Name = "xtraTabPage2";
-            xtraTabPage2.Size = new Size(740, 348);
-            xtraTabPage2.Text = "xtraTabPage2";
             // 
             // frmAna
             // 
@@ -238,9 +209,6 @@
             splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)navBarControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)xtraTabControlMain).EndInit();
-            xtraTabControlMain.ResumeLayout(false);
-            xtraTabPage1.ResumeLayout(false);
-            xtraTabPage1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -261,8 +229,5 @@
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup4;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup5;
         private DevExpress.XtraTab.XtraTabControl xtraTabControlMain;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

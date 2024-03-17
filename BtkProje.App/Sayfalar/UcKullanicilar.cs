@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BtkProje.Servis;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,14 @@ namespace BtkProje.App.Sayfalar
         public UcKullanicilar()
         {
             InitializeComponent();
+
+            VerileriGetir();
+        }
+
+        void VerileriGetir()
+        {
+            var liste = DbServisi.KullaniciBagliListesi();
+            gridControl1.DataSource = liste;
         }
     }
 }

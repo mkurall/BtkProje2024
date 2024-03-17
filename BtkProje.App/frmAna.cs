@@ -1,4 +1,6 @@
 using BtkProje.App.Sayfalar;
+using BtkProje.Servis;
+using DevExpress.XtraEditors;
 using DevExpress.XtraTab;
 using DevExpress.XtraTab.ViewInfo;
 
@@ -96,6 +98,19 @@ namespace BtkProje.App
             ClosePageButtonEventArgs ea2 = (ClosePageButtonEventArgs)e;
 
             SayfaKapat((XtraTabPage)ea2.Page);
+        }
+
+        private void xtraTabPage1_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void bbiKaydet_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DbServisi.Kaydet();
+
+            XtraMessageBox.Show("Veriler kayýt edildi.","Bilgi",
+               MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
