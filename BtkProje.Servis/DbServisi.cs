@@ -11,7 +11,7 @@ namespace BtkProje.Servis
     public static class DbServisi
     {
         static BtkProjeDbContext ctx = new BtkProjeDbContext();
-        public static TblKullanici OturumAcanKullanici { get; set; }
+        public static TblKullanici OturumAcanKullanici { get; private set; }
 
         public static List<TblKullanici> KullaniciListesi()
         {

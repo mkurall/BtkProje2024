@@ -28,12 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            SuspendLayout();
+            // 
+            // labelControl1
+            // 
+            labelControl1.Appearance.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl1.Appearance.Options.UseFont = true;
+            labelControl1.Location = new Point(80, 44);
+            labelControl1.Name = "labelControl1";
+            labelControl1.Size = new Size(289, 48);
+            labelControl1.TabIndex = 0;
+            labelControl1.Text = "Form'un tam ekran açılması için;\r\nWindowState = Maximized";
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1048, 600);
+            Controls.Add(labelControl1);
+            Name = "Form1";
+            Text = "Form1";
+            WindowState = FormWindowState.Maximized;
+            Shown += Form1_Shown;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }
