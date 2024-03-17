@@ -15,4 +15,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BtkProje.Model\BtkProje.Model.csproj" />
+  </ItemGroup>
+
 </Project>
