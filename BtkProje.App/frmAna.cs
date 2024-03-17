@@ -1,7 +1,13 @@
+using BtkProje.App.Sayfalar;
+using DevExpress.XtraTab;
+
 namespace BtkProje.App
 {
     public partial class frmAna : Form
     {
+
+
+
         public frmAna()
         {
             InitializeComponent();
@@ -19,6 +25,56 @@ namespace BtkProje.App
                 //Oturum açtýktan sonra ne istersiniz yazýn
 
             }
+        }
+
+        Dictionary<SayfaTurleri, XtraTabPage> sayfalar =
+            new Dictionary<SayfaTurleri, XtraTabPage>();
+        enum SayfaTurleri { Kullanicilar = 0, Ayarlar=1 };
+
+        void SayfaAc(SayfaTurleri turu, string baslik, Image image,bool tekrarEdebilirMi=false)
+        {
+            //Sayfa daha önce açýlmýþ mý?
+            if (!tekrarEdebilirMi)
+            {
+                if (sayfalar.ContainsKey(turu))
+                {
+                    XtraTabPage eskiSayfa = sayfalar[turu];
+                    eskiSayfa.Show();//sayfayý göster ve çýk
+                    return;
+                }
+            }
+
+            XtraTabPage tabPage = new XtraTabPage();
+            tabPage.Text = baslik;
+            tabPage.ImageOptions.Image = image;
+
+            //Sayfa içeriðini oluþtur ve ekle
+            UserControl icerik = null;
+
+            if (turu == SayfaTurleri.Kullanicilar)
+                icerik = new UcKullanicilar();
+            else if (turu == SayfaTurleri.Ayarlar)
+                icerik = new UcAyarlar();
+
+            tabPage.Controls.Add(icerik);
+            icerik.Dock = DockStyle.Fill;
+            /////////////////////////////////////////////////
+
+            //Sonrasý için sakla, iki kere ayný sayfayý açma
+            if(!tekrarEdebilirMi)
+             sayfalar.Add(SayfaTurleri.Ayarlar, tabPage);
+
+            xtraTabControlMain.TabPages.Add(tabPage);
+            tabPage.Show();
+        }
+        private void nbiKullanicilar_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            SayfaAc(SayfaTurleri.Kullanicilar, "Kullanýcýlar", Properties.Resources.usergroup_32x32,true);
+        }
+
+        private void nbiAyarlar_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            SayfaAc(SayfaTurleri.Ayarlar, "Ayarlar", Properties.Resources.properties_32x32);
         }
     }
 }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             bbiKaydet = new DevExpress.XtraBars.BarButtonItem();
             ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -37,12 +36,16 @@
             splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
             navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
-            navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
+            nbiKullanicilar = new DevExpress.XtraNavBar.NavBarItem();
+            nbiAyarlar = new DevExpress.XtraNavBar.NavBarItem();
             navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             navBarGroup3 = new DevExpress.XtraNavBar.NavBarGroup();
             navBarGroup4 = new DevExpress.XtraNavBar.NavBarGroup();
             navBarGroup5 = new DevExpress.XtraNavBar.NavBarGroup();
+            xtraTabControlMain = new DevExpress.XtraTab.XtraTabControl();
+            xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainerControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainerControl1.Panel1).BeginInit();
@@ -51,17 +54,10 @@
             splitContainerControl1.Panel2.SuspendLayout();
             splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)navBarControl1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)xtraTabControlMain).BeginInit();
+            xtraTabControlMain.SuspendLayout();
+            xtraTabPage1.SuspendLayout();
             SuspendLayout();
-            // 
-            // labelControl1
-            // 
-            labelControl1.Appearance.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelControl1.Appearance.Options.UseFont = true;
-            labelControl1.Location = new Point(88, 82);
-            labelControl1.Name = "labelControl1";
-            labelControl1.Size = new Size(289, 48);
-            labelControl1.TabIndex = 0;
-            labelControl1.Text = "Form'un tam ekran açılması için;\r\nWindowState = Maximized";
             // 
             // ribbonControl1
             // 
@@ -114,7 +110,7 @@
             // 
             // splitContainerControl1.Panel2
             // 
-            splitContainerControl1.Panel2.Controls.Add(labelControl1);
+            splitContainerControl1.Panel2.Controls.Add(xtraTabControlMain);
             splitContainerControl1.Panel2.Text = "Panel2";
             splitContainerControl1.Size = new Size(1048, 384);
             splitContainerControl1.SplitterPosition = 294;
@@ -123,9 +119,13 @@
             // navBarControl1
             // 
             navBarControl1.ActiveGroup = navBarGroup1;
+            navBarControl1.Appearance.Item.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            navBarControl1.Appearance.Item.Options.UseFont = true;
+            navBarControl1.Appearance.ItemHotTracked.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            navBarControl1.Appearance.ItemHotTracked.Options.UseFont = true;
             navBarControl1.Dock = DockStyle.Fill;
             navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] { navBarGroup1, navBarGroup2, navBarGroup3, navBarGroup4, navBarGroup5 });
-            navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] { navBarItem1, navBarItem2 });
+            navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] { nbiKullanicilar, nbiAyarlar });
             navBarControl1.Location = new Point(0, 0);
             navBarControl1.Name = "navBarControl1";
             navBarControl1.OptionsNavPane.ExpandedWidth = 294;
@@ -138,28 +138,31 @@
             navBarGroup1.Caption = "Temel İşlemler";
             navBarGroup1.Expanded = true;
             navBarGroup1.ImageOptions.SmallImage = Properties.Resources.properties_32x32;
-            navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] { new DevExpress.XtraNavBar.NavBarItemLink(navBarItem1), new DevExpress.XtraNavBar.NavBarItemLink(navBarItem2) });
+            navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] { new DevExpress.XtraNavBar.NavBarItemLink(nbiKullanicilar), new DevExpress.XtraNavBar.NavBarItemLink(nbiAyarlar) });
             navBarGroup1.Name = "navBarGroup1";
             // 
-            // navBarItem1
+            // nbiKullanicilar
             // 
-            navBarItem1.Appearance.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            navBarItem1.Appearance.Options.UseFont = true;
-            navBarItem1.Caption = "Kullanıcılar";
-            navBarItem1.ImageOptions.SmallImage = Properties.Resources.usergroup_32x32;
-            navBarItem1.Name = "navBarItem1";
+            nbiKullanicilar.Appearance.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            nbiKullanicilar.Appearance.Options.UseFont = true;
+            nbiKullanicilar.Caption = "Kullanıcılar";
+            nbiKullanicilar.ImageOptions.SmallImage = Properties.Resources.usergroup_32x32;
+            nbiKullanicilar.Name = "nbiKullanicilar";
+            nbiKullanicilar.LinkClicked += nbiKullanicilar_LinkClicked;
             // 
-            // navBarItem2
+            // nbiAyarlar
             // 
-            navBarItem2.Appearance.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            navBarItem2.Appearance.Options.UseFont = true;
-            navBarItem2.Caption = "Ayarlar";
-            navBarItem2.ImageOptions.SmallImage = Properties.Resources.version_32x32;
-            navBarItem2.Name = "navBarItem2";
+            nbiAyarlar.Appearance.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            nbiAyarlar.Appearance.Options.UseFont = true;
+            nbiAyarlar.Caption = "Ayarlar";
+            nbiAyarlar.ImageOptions.SmallImage = Properties.Resources.version_32x32;
+            nbiAyarlar.Name = "nbiAyarlar";
+            nbiAyarlar.LinkClicked += nbiAyarlar_LinkClicked;
             // 
             // navBarGroup2
             // 
             navBarGroup2.Caption = "Ürün Kategorileri";
+            navBarGroup2.Expanded = true;
             navBarGroup2.Name = "navBarGroup2";
             // 
             // navBarGroup3
@@ -176,6 +179,42 @@
             // 
             navBarGroup5.Caption = "Müşteriler";
             navBarGroup5.Name = "navBarGroup5";
+            // 
+            // xtraTabControlMain
+            // 
+            xtraTabControlMain.AppearancePage.Header.Font = new Font("Tahoma", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            xtraTabControlMain.AppearancePage.Header.Options.UseFont = true;
+            xtraTabControlMain.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
+            xtraTabControlMain.Dock = DockStyle.Fill;
+            xtraTabControlMain.Location = new Point(0, 0);
+            xtraTabControlMain.Name = "xtraTabControlMain";
+            xtraTabControlMain.SelectedTabPage = xtraTabPage1;
+            xtraTabControlMain.Size = new Size(742, 384);
+            xtraTabControlMain.TabIndex = 0;
+            xtraTabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] { xtraTabPage1, xtraTabPage2 });
+            // 
+            // xtraTabPage1
+            // 
+            xtraTabPage1.Controls.Add(labelControl1);
+            xtraTabPage1.Name = "xtraTabPage1";
+            xtraTabPage1.Size = new Size(740, 348);
+            xtraTabPage1.Text = "xtraTabPage1";
+            // 
+            // labelControl1
+            // 
+            labelControl1.Appearance.Font = new Font("Tahoma", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            labelControl1.Appearance.Options.UseFont = true;
+            labelControl1.Location = new Point(70, 60);
+            labelControl1.Name = "labelControl1";
+            labelControl1.Size = new Size(529, 28);
+            labelControl1.TabIndex = 0;
+            labelControl1.Text = "ClosePageButtonShowMode = InAllTabPageHeaders";
+            // 
+            // xtraTabPage2
+            // 
+            xtraTabPage2.Name = "xtraTabPage2";
+            xtraTabPage2.Size = new Size(740, 348);
+            xtraTabPage2.Text = "xtraTabPage2";
             // 
             // frmAna
             // 
@@ -194,17 +233,18 @@
             splitContainerControl1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainerControl1.Panel2).EndInit();
             splitContainerControl1.Panel2.ResumeLayout(false);
-            splitContainerControl1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainerControl1).EndInit();
             splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)navBarControl1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)xtraTabControlMain).EndInit();
+            xtraTabControlMain.ResumeLayout(false);
+            xtraTabPage1.ResumeLayout(false);
+            xtraTabPage1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
@@ -213,11 +253,15 @@
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraNavBar.NavBarControl navBarControl1;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem1;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem2;
+        private DevExpress.XtraNavBar.NavBarItem nbiKullanicilar;
+        private DevExpress.XtraNavBar.NavBarItem nbiAyarlar;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup3;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup4;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup5;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControlMain;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

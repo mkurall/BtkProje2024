@@ -62,6 +62,7 @@
             // 
             // txtKullaniciAd
             // 
+            txtKullaniciAd.EditValue = "admin";
             txtKullaniciAd.Location = new Point(234, 114);
             txtKullaniciAd.Name = "txtKullaniciAd";
             txtKullaniciAd.Properties.Appearance.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -81,6 +82,7 @@
             // 
             // txtParola
             // 
+            txtParola.EditValue = "1234";
             txtParola.Location = new Point(234, 150);
             txtParola.Name = "txtParola";
             txtParola.Properties.Appearance.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
