@@ -30,6 +30,11 @@ namespace BtkProje.Servis
             return ctx.Kullanicilar.Local.ToBindingList();
         }
 
+        public static void KullaniciSil(TblKullanici kullanici)
+        {
+            ctx.Kullanicilar.Remove(kullanici);
+        }
+
         public static bool OturumAc(string kullaniciAdi, string parola)
         {
             TblKullanici kull = ctx.Kullanicilar.
