@@ -40,6 +40,7 @@
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
             labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            lblBilgi = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)txtKullaniciAd.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtParola.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)panelControl1).BeginInit();
@@ -98,6 +99,7 @@
             btnGiris.Size = new Size(137, 48);
             btnGiris.TabIndex = 2;
             btnGiris.Text = "Giriş";
+            btnGiris.Click += btnGiris_Click;
             // 
             // panelControl1
             // 
@@ -137,7 +139,7 @@
             pictureBox2.Image = Properties.Resources.user;
             pictureBox2.Location = new Point(39, 116);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(50, 32);
+            pictureBox2.Size = new Size(50, 30);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 4;
             pictureBox2.TabStop = false;
@@ -145,9 +147,9 @@
             // pictureBox3
             // 
             pictureBox3.Image = Properties.Resources.password;
-            pictureBox3.Location = new Point(42, 154);
+            pictureBox3.Location = new Point(39, 154);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(48, 30);
+            pictureBox3.Size = new Size(50, 30);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 5;
             pictureBox3.TabStop = false;
@@ -162,12 +164,26 @@
             labelControl4.TabIndex = 6;
             labelControl4.Text = resources.GetString("labelControl4.Text");
             // 
+            // lblBilgi
+            // 
+            lblBilgi.Appearance.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblBilgi.Appearance.ForeColor = Color.Red;
+            lblBilgi.Appearance.Options.UseFont = true;
+            lblBilgi.Appearance.Options.UseForeColor = true;
+            lblBilgi.Location = new Point(42, 209);
+            lblBilgi.Name = "lblBilgi";
+            lblBilgi.Size = new Size(38, 24);
+            lblBilgi.TabIndex = 7;
+            lblBilgi.Text = "Bilgi";
+            lblBilgi.Visible = false;
+            // 
             // frmGiris
             // 
             Appearance.Options.UseFont = true;
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(500, 539);
+            Controls.Add(lblBilgi);
             Controls.Add(labelControl4);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
@@ -209,5 +225,6 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.LabelControl lblBilgi;
     }
 }

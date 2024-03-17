@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using BtkProje.Servis;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,19 @@ namespace BtkProje.App
         public frmGiris()
         {
             InitializeComponent();
+        }
+
+        private void btnGiris_Click(object sender, EventArgs e)
+        {
+            bool basariliMi = DbServisi.OturumAc(txtKullaniciAd.Text, txtParola.Text);
+
+            if(basariliMi) //Dialog Penceresini Başarılı dönerek kapatır
+                DialogResult = DialogResult.OK;
+            else
+            {
+                lblBilgi.Text = "Kullanıcı adı yada parola hatalı!";
+                lblBilgi.Visible = true;
+            }
         }
     }
 }

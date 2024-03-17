@@ -14,15 +14,15 @@ namespace BtkProje.Model.Db
         private string connectionString;
         
 
-        //public BtkProjeDbContext(string connectionString)
-        //{
-        //    this.connectionString = connectionString;
-        //}
-        
-        //EF Core Tools Bunu kullanacak
+        //EF Core Tools Bunu(ilk yapıcıyı) kullanacak
         public BtkProjeDbContext()
         {
-            connectionString = "Server=.\\SQLEXPRESS;Database=btk_proje_db;Trusted_Connection=True;Encrypt=False";
+            this.connectionString = "Server=.\\SQLEXPRESS;Database=btk_proje_db;Trusted_Connection=True;Encrypt=False";
+        }
+
+        public BtkProjeDbContext(string connectionString)
+        {
+            this.connectionString = connectionString;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

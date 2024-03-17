@@ -14,7 +14,7 @@ namespace BtkProje.App
 
 
 
-            Application.Run(new Form1());
+            Application.Run(new frmAna());
         }
     }
 }
